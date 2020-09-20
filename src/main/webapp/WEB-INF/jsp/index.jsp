@@ -24,12 +24,12 @@
 
 		<div class="starter-template">
 			<h1>Spring Boot  Example</h1>
-                        
-			
-		</div>
-		
 
-		
+
+		</div>
+
+
+
 
 
 	</div>

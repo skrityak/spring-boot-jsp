@@ -1,10 +1,16 @@
-Spring Boot with JSP pages
+Spring Boot 2 with JSP pages
 ===========================
 Technologies: Spring-Boot with WEB, JPA, JAXRS, JSP and Boostrap css/js framework.
 
 Reference:
 https://github.com/spring-projects/spring-boot/tree/v1.5.8.RELEASE/spring-boot-samples/spring-boot-sample-web-jsp
 
+Forked from: https://github.com/rigels02/spring-boot-jsp and made the following changes:-
+
+* JDK14
+* Upgraded to springboot2 and use BOM style
+* Use Hibernate bytecode optimization
+* Use Lombok
 
 Steps
 -----
