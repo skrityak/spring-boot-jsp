@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : list-tasks
     Created on : Oct 27, 2017, 6:45:34 PM
     Author     : raitis
@@ -20,13 +20,13 @@
         <h1>Hello Tasks!</h1>
         <div class="container">
             <!--Tasks List-->
-            <c:if test="${not empty message}">                
+            <c:if test="${not empty message}">
                 <div class="alert alert-success">
                     ${message}
                 </div>
-            </c:if> 
-            
-            <form action="${pageContext.servletContext.contextPath}/webtasks" method="get" id="taskForm" role="form" >              
+            </c:if>
+
+            <form action="${pageContext.servletContext.contextPath}/webtasks" method="get" id="taskForm" role="form" >
                 <input type="hidden" id="idTask" name="idTask">
                 <input type="hidden" id="action" name="action">
                 <c:choose>
@@ -44,46 +44,46 @@
                             </thead>
                             <c:forEach var="task" items="${taskList}">
                                 <c:set var="classSucess" value=""/>
-                                <c:if test ="${idTask == task.id}">                        	
+                                <c:if test ="${idTask == task.id}">
                                     <c:set var="classSucess" value="info"/>
                                 </c:if>
                                 <tr class="${classSucess}">
                                     <td>
                                         <a href="${pageContext.servletContext.contextPath}/webtasks/do?id=${task.id}&action=searchById">${task.id}</a>
-                                    </td>                                    
+                                    </td>
                                     <td>${task.name}</td>
                                     <td>${task.descriptor}</td>
                                  <td><fmt:formatDate value="${task.date_created}" type="date" pattern="dd-MM-yyyy HH:mm"/>
                                  </td>
                                     <!--td>${task.date_created}</td -->
                                     <td>${task.finished}</td>
-                                    
+
                                     <td>
                                         <form >
-                                            
+
                                         </form>
                                     </td>
-                                    <td><a href="${pageContext.servletContext.contextPath}/webtasks/do?id=${task.id}&action=remove" id="remove"> 
+                                    <td><a href="${pageContext.servletContext.contextPath}/webtasks/do?id=${task.id}&action=remove" id="remove">
                                             <span class="glyphicon glyphicon-trash"/>
                                         </a>
-                                                   
+
                                     </td>
                                 </tr>
-                            </c:forEach>               
-                        </table>  
-                    </c:when>                    
+                            </c:forEach>
+                        </table>
+                    </c:when>
                     <c:otherwise>
-                        <br>           
+                        <br>
                         <div class="alert alert-info">
                             No Task anymore...
                         </div>
                     </c:otherwise>
-                </c:choose>                        
+                </c:choose>
             </form>
             <a href="${pageContext.servletContext.contextPath}/webtasks/new-task"><span class="btn btn-primary  btn-md">New Task</span></a>
-            <!-- form action ="jsp/new-task.jsp">            
+            <!-- form action ="jsp/new-task.jsp">
                 <br></br>
-                <button type="submit" class="btn btn-primary  btn-md">New Task</button> 
+                <button type="submit" class="btn btn-primary  btn-md">New Task</button>
             </form-->
         </div>
     </body>

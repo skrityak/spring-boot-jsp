@@ -17,6 +17,7 @@
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 		<springboot.version>2.2.6.RELEASE</springboot.version>
 		<hibernate.version>5.4.21.Final</hibernate.version>
+		<web-resource-working-dir>${project.basedir}/target/webapp</web-resource-working-dir>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -109,6 +110,56 @@
 						<goals>
 							<goal>enhance</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-jspc-maven-plugin</artifactId>
+				<version>9.4.15.v20190215</version>
+				<executions>
+					<execution>
+						<id>jspc-pre-compile</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>jspc</goal>
+						</goals>
+						<configuration>
+							<mergeFragment>true</mergeFragment>
+							<webXml>${project.basedir}/src/main/webapp/WEB-INF/empty-web.xml</webXml>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.tomcat</groupId>
+						<artifactId>tomcat-jasper</artifactId>
+						<version>9.0.14</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-web-xml</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/target/classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/target</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>web.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

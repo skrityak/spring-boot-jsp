@@ -11,6 +11,7 @@ Forked from: https://github.com/rigels02/spring-boot-jsp and made the following 
 * Upgraded to springboot2 and use BOM style
 * Use Hibernate bytecode optimization
 * Use Lombok
+* Pre-compiled JSP
 
 Steps
 -----
